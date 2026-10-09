@@ -32,6 +32,7 @@ GorillaPhotoは [storytold/photocraft](https://github.com/storytold/photocraft) 
 | `apps/photocraft/src/app_icon.rs` | ウィンドウ／タスクバーのアイコン |
 | `apps/photocraft/build.rs` | Windows exeのアイコンと製品名 |
 | `apps/photocraft/tests/mac_menu_appkit.rs` | macOSメニューのテストの期待値 |
+| `crates/ui-egui/src/titlebar.rs` | タイトルバーのテスト：Discordボタンの有無を `SHOW_ARTCRAFT_COMMUNITY` に合わせる |
 | `docs/brand/` | ArtCraftのロゴを削除（ブランドライセンスがフォークに削除を求めているため） |
 | `ATTRIBUTION.md` | GorillaPhotoアイコンの行を追加、ArtCraftロゴの行を変更 |
 
