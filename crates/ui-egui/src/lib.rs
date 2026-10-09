@@ -63,6 +63,7 @@ pub mod filter_dialog;
 pub mod gallery_ui;
 /// GorillaPhoto fork layer (see GORILLA.md).
 pub mod gorilla;
+pub mod gorilla_icons;
 pub mod gpu_canvas;
 pub mod gpu_status;
 pub mod gradient_ui;

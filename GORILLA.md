@@ -7,7 +7,8 @@ GorillaPhotoは [storytold/photocraft](https://github.com/storytold/photocraft) 
 | 置き場所 | 中身 |
 |---|---|
 | `crates/ui-egui/src/gorilla.rs` | アプリ名、リンク、アイコン、ArtCraftリンクの表示切り替え、テーマ色の調整（`ACCENT` と `tune_tokens`：Pro系テーマの強調色をゴリラ赤に） |
-| `assets/gorilla/` | アプリアイコン（PNG・ICO） |
+| `crates/ui-egui/src/gorilla_icons.rs` | オリジナルのツールアイコン51種の一覧と、ツール→アイコンの対応 |
+| `assets/gorilla/` | アプリアイコン（PNG・ICO）、ツールアイコン（`tools/gp-*.svg`） |
 | `README.md` / `GORILLA.md` | このリポジトリの説明 |
 
 アプリ名は `gorilla::APP_NAME` の1か所で決まります。UIの文字列は翻訳関数を通るときに「PhotoCraft」が自動で「GorillaPhoto」に置き換わるので、本家が新しい文言を足しても自動でGorillaPhotoと表示されます。
@@ -18,7 +19,8 @@ GorillaPhotoは [storytold/photocraft](https://github.com/storytold/photocraft) 
 
 | ファイル | 変更内容 |
 |---|---|
-| `crates/ui-egui/src/lib.rs` | `pub mod gorilla;` を追加 |
+| `crates/ui-egui/src/lib.rs` | `pub mod gorilla;` と `pub mod gorilla_icons;` を追加 |
+| `crates/ui-egui/src/icons.rs` | `white_icons()` に `gorilla_icons::ICONS` を連結、`tool_icon()` の先頭で `gorilla_icons::tool_icon` を優先 |
 | `crates/ui-egui/src/i18n/mod.rs` | `tr` / `tr_ctx` / `tr_id` / `trn` の戻り値を `gorilla::rebrand` に通す |
 | `crates/ui-egui/src/theme.rs` | `apply()` のトークンを `gorilla::tune_tokens` に通す |
 | `crates/ui-egui/src/brand.rs` | タイトルバーのマークを `gorilla::ICON_PNG_128` に |
