@@ -168,8 +168,10 @@ pub fn show(app: &mut PhotocraftApp, ctx: &egui::Context) {
                             ui.label(crate::i18n::fmt(tl!("Version {version}"), &[("version", &photocraft_engine::build_info::long_version())]));
                             ui.add_space(12.0);
                             ui.vertical_centered(|ui| {
-                                crate::links::discord_button(app, ui, 220.0);
-                                ui.add_space(8.0);
+                                if crate::gorilla::SHOW_ARTCRAFT_COMMUNITY {
+                                    crate::links::discord_button(app, ui, 220.0);
+                                    ui.add_space(8.0);
+                                }
                                 crate::links::link_row(app, ui);
                             });
                             ui.add_space(10.0);
@@ -323,7 +325,7 @@ pub fn title(d: &Dialog) -> String {
     match d.kind {
         DialogKind::NewDocument => "New Document".into(),
         DialogKind::About if d.fields.get("systemInfo").and_then(Value::as_bool) == Some(true) => "System Info".into(),
-        DialogKind::About => "About PhotoCraft".into(),
+        DialogKind::About => crate::gorilla::rebrand("About PhotoCraft").into(),
         DialogKind::LayerStyle => "Layer Style".into(),
         DialogKind::Command => d.fields.get("__label").and_then(Value::as_str).unwrap_or("Command").trim_end_matches('…').to_string(),
         DialogKind::Error => "Error".into(),
