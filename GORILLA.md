@@ -6,7 +6,7 @@ GorillaPhotoは [storytold/photocraft](https://github.com/storytold/photocraft) 
 
 | 置き場所 | 中身 |
 |---|---|
-| `crates/ui-egui/src/gorilla.rs` | アプリ名、リンク、アイコン、ArtCraftリンクの表示切り替え、テーマ色の調整 (`tune_tokens`) |
+| `crates/ui-egui/src/gorilla.rs` | アプリ名、リンク、アイコン、ArtCraftリンクの表示切り替え、テーマ色の調整（`ACCENT` と `tune_tokens`：Pro系テーマの強調色をゴリラ赤に） |
 | `assets/gorilla/` | アプリアイコン（PNG・ICO） |
 | `README.md` / `GORILLA.md` | このリポジトリの説明 |
 

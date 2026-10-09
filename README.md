@@ -13,6 +13,7 @@ GorillaPhotoは、オープンソースの画像編集アプリ **[PhotoCraft](h
 | アプリ名 | GorillaPhoto |
 | アイコン | 赤背景のゴリラ（`assets/gorilla/`） |
 | ArtCraftのロゴ・コミュニティリンク | 外してある（ArtCraftブランドのライセンスに従う） |
+| 強調色 | Pro系テーマ（既定）の青をゴリラ赤に |
 | 操作感（メニュー・ショートカット・ツール） | 本家と同じ（Photoshop準拠） |
 
 これから追加していく予定：Photoshop風のオリジナルツールアイコン、Photoshop式のパネル移動（タブの付け替え、フローティング、左右ドッキング）。

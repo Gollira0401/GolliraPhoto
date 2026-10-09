@@ -58,12 +58,22 @@ pub fn rebrand_owned(s: String) -> String {
     if s.contains(UPSTREAM_NAME) { s.replace(UPSTREAM_NAME, APP_NAME) } else { s }
 }
 
-/// GorillaPhoto's adjustments to a theme's tokens. Applied on top of every upstream theme in
-/// `theme::Tokens::for_kind`, so colour changes for GorillaPhoto live here, not in `theme.rs`.
+/// GorillaPhoto red: the accent of the Photoshop-style themes, matching the app icon. White text
+/// on it keeps a 4.6:1 contrast ratio.
+pub const ACCENT: egui::Color32 = egui::Color32::from_rgb(220, 48, 48);
+
+/// GorillaPhoto's adjustments to a theme's tokens, applied on top of every upstream theme in
+/// `theme::apply`, so colour changes for GorillaPhoto live here, not in `theme.rs`.
 ///
-/// The default look is the upstream Pro theme (Photoshop's dark gray), kept as is; change
-/// tokens here to give GorillaPhoto its own colours.
-pub fn tune_tokens(t: crate::theme::Tokens) -> crate::theme::Tokens {
+/// The Photoshop-style themes (Pro and Pro Medium Gray, the default) keep Photoshop's grays and
+/// swap its blue accent for GorillaPhoto red. Studio and Classic keep their own palettes.
+pub fn tune_tokens(mut t: crate::theme::Tokens) -> crate::theme::Tokens {
+    use crate::theme::ThemeKind;
+    if matches!(t.kind, ThemeKind::Pro | ThemeKind::ProMedium) {
+        t.accent = ACCENT;
+        t.accent_border = ACCENT;
+        t.primary_bg = ACCENT;
+    }
     t
 }
 
@@ -86,6 +96,17 @@ mod tests {
         assert!(eframe_free_png_check(ICON_PNG_128));
         assert!(eframe_free_png_check(ICON_PNG_256));
         assert!(eframe_free_png_check(ICON_PNG_1024));
+    }
+
+    #[test]
+    fn photoshop_themes_use_gorilla_red() {
+        use crate::theme::{ThemeKind, Tokens};
+        for kind in [ThemeKind::Pro, ThemeKind::ProMedium] {
+            let t = tune_tokens(Tokens::for_kind(kind));
+            assert_eq!((t.accent, t.accent_border, t.primary_bg), (ACCENT, ACCENT, ACCENT), "{kind:?}");
+        }
+        let studio = Tokens::for_kind(ThemeKind::Studio);
+        assert_eq!(tune_tokens(studio), studio);
     }
 
     fn eframe_free_png_check(bytes: &[u8]) -> bool {
