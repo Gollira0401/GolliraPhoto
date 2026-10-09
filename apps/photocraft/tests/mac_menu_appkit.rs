@@ -97,10 +97,10 @@ fn main() {
     // The Mac layout, as AppKit has it.
     let bar = main_menu();
     let tops: Vec<String> = (0..bar.numberOfItems()).filter_map(|i| bar.itemAtIndex(i)?.submenu()).map(|m| m.title().to_string()).collect();
-    assert_eq!(tops, ["PhotoCraft", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "Help"]);
+    assert_eq!(tops, ["GorillaPhoto", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "Help"]);
     let app_menu = submenu(&bar, "PhotoCraft");
     let names = titles(&app_menu);
-    for want in ["About PhotoCraft", "Settings", "Language", "Appearance", "Hide PhotoCraft", "Quit PhotoCraft"] {
+    for want in ["About GorillaPhoto", "Settings", "Language", "Appearance", "Hide GorillaPhoto", "Quit GorillaPhoto"] {
         assert!(names.iter().any(|n| n == want), "{want} missing from the app menu: {names:?}");
     }
     let quit = app_menu.itemAtIndex(index(&app_menu, "Quit PhotoCraft")).expect("Quit");
