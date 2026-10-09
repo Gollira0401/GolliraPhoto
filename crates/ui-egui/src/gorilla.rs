@@ -27,7 +27,7 @@ pub const UPSTREAM_LABEL: &str = "Based on PhotoCraft";
 /// brand licence (`docs/brand/LICENSE-brand.txt`) doesn't let forks suggest ArtCraft endorses them.
 pub const SHOW_ARTCRAFT_COMMUNITY: bool = false;
 
-/// The title bar mark, 128 px (where Photoshop shows its "Ps" tile).
+/// The title bar mark, 128 px (where Photoshop shows its "Ps" tile): the gorilla mascot on red.
 pub const ICON_PNG_128: &[u8] = include_bytes!("../../../assets/gorilla/hicolor/128x128/gorillaphoto.png");
 /// The window and taskbar icon, 256 px.
 pub const ICON_PNG_256: &[u8] = include_bytes!("../../../assets/gorilla/hicolor/256x256/gorillaphoto.png");

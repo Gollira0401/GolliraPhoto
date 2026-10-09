@@ -1,4 +1,4 @@
-//! The GorillaPhoto brand mark at the left of the title bar: the app icon (the "Gp" tile,
+//! The GorillaPhoto brand mark at the left of the title bar: the app icon (the gorilla mascot,
 //! `assets/gorilla/`, see `gorilla.rs`), where Photoshop shows its "Ps" tile. The PNG carries the
 //! icon's rounded corners; it is decoded once per context into a mipmapped texture, so it stays
 //! crisp at the title bar's size on any display scale.
