@@ -18,6 +18,7 @@ fn white_icons() -> &'static HashMap<&'static str, Arc<[u8]>> {
     MAP.get_or_init(|| {
         ICONS
             .iter()
+            .chain(crate::gorilla_icons::ICONS.iter())
             .map(|(name, bytes)| {
                 let svg = String::from_utf8_lossy(bytes).replace("currentColor", "#ffffff").replace("stroke-width=\"2\"", "stroke-width=\"1.75\"");
                 (*name, Arc::from(svg.into_bytes().into_boxed_slice()))
@@ -58,6 +59,9 @@ pub fn cursor(ctx: &egui::Context, name: &str, p: egui::Pos2, hot: Vec2, size: f
 }
 
 pub fn tool_icon(t: Tool) -> &'static str {
+    if let Some(name) = crate::gorilla_icons::tool_icon(t) {
+        return name;
+    }
     match t {
         Tool::Move => "move",
         Tool::RectMarquee => "square-dashed",
